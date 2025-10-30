@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abundance Frequency - Manifest Wealth Daily</title>
+    <meta name="description" content="Join thousands manifesting abundance with 432Hz meditations and daily affirmations. Download free.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            min-height: 100vh; padding: 20px; color: white; position: relative;
+        }
+        .floating-crystal {
+            position: fixed; width: 100px; height: 100px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            border-radius: 50%; animation: float 6s ease-in-out infinite; z-index: -1;
+        }
+        .floating-crystal:nth-child(1) { top: 10%; left: 10%; }
+        .floating-crystal:nth-child(2) { top: 60%; right: 10%; width: 150px; height: 150px; animation-delay: -2s; }
+        .floating-crystal:nth-child(3) { bottom: 20%; left: 20%; width: 80px; height: 80px; animation-delay: -4s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        .container { max-width: 900px; margin: 0 auto; position: relative; z-index: 1; }
+        header { text-align: center; margin-bottom: 40px; padding: 20px; }
+        .logo { font-size: 3em; margin-bottom: 10px; text-shadow: 0 0 20px rgba(102, 126, 234, 0.7); }
+        header h1 { 
+            font-size: 2.5em; margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .social-proof { background: rgba(255,255,255,0.1); padding: 20px; border-radius: 15px; margin: 20px 0; text-align: center; }
+        .download-btn, .buy-btn { 
+            background: linear-gradient(45deg, #FFD700, #FFA500); 
+            color: #000; font-size: 1.2em; padding: 15px 30px; 
+            font-weight: bold; border: none; border-radius: 50px; 
+            cursor: pointer; margin: 10px; display: inline-block;
+        }
+        .buy-btn { background: linear-gradient(45deg, #4ecdc4, #44a08d); color: white; }
+        main { display: grid; gap: 25px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .card { 
+            background: rgba(255,255,255,0.1); 
+            backdrop-filter: blur(10px); 
+            padding: 30px; 
+            border-radius: 20px; 
+            border: 1px solid rgba(255,255,255,0.2); 
+            text-align: center; 
+            transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-5px); }
+        .product-card { border: 2px solid #4ecdc4; position: relative; }
+        .best-seller-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: #FFD700;
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+        h2 { color: #a8b1ff; margin-bottom: 20px; font-size: 1.4em; }
+        .affirmation, .quote { font-size: 1.3em; line-height: 1.6; margin: 25px 0; font-style: italic; color: #e2e4ff; min-height: 80px; }
+        .graphic { font-size: 3em; margin: 15px 0; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+        button { 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            color: white; border: none; padding: 12px 25px; 
+            border-radius: 50px; font-size: 1em; cursor: pointer; 
+            margin: 5px; transition: all 0.3s ease;
+        }
+        button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); }
+        .timer { font-size: 2.5em; margin: 15px 0; color: #a8b1ff; font-family: 'Courier New', monospace; }
+        textarea { 
+            width: 100%; height: 120px; padding: 15px; 
+            border: 2px solid rgba(255,255,255,0.2); 
+            border-radius: 15px; font-size: 1em; margin: 10px 0; 
+            background: rgba(255,255,255,0.1); color: white; 
+            resize: vertical;
+        }
+        
+        /* Audio Library Styles */
+        .audio-library {
+            margin: 20px 0;
+        }
+        .audio-track {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 15px;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .audio-track:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateX(5px);
+        }
+        .audio-track.playing {
+            background: rgba(102, 126, 234, 0.3);
+            border: 1px solid #667eea;
+        }
+        .track-icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+        .track-info {
+            flex: 1;
+            text-align: left;
+        }
+        .track-info span {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        .play-btn {
+            font-size: 1.2em;
+        }
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 15px 0;
+            justify-content: center;
+        }
+        .frequency-badge {
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-left: 10px;
+        }
+        
+        .modal { 
+            display: none; position: fixed; top: 0; left: 0; 
+            width: 100%; height: 100%; background: rgba(0,0,0,0.8); 
+            z-index: 1000; 
+        }
+        .modal-content { 
+            position: absolute; top: 50%; left: 50%; 
+            transform: translate(-50%, -50%); 
+            background: linear-gradient(135deg, #1e3c72, #2a5298); 
+            padding: 40px; border-radius: 20px; text-align: center; 
+            max-width: 500px; width: 90%; 
+        }
+        .features-list { 
+            text-align: left; margin: 20px 0; 
+            list-style: none; 
+        }
+        .features-list li { 
+            margin: 10px 0; padding-left: 25px;
+            position: relative;
+        }
+        .features-list li:before {
+            content: "✨";
+            position: absolute;
+            left: 0;
+        }
+        .testimonial { 
+            font-style: italic; background: rgba(255,255,255,0.1); 
+            padding: 15px; border-radius: 10px; margin: 15px 0;
+        }
+        @media (max-width: 600px) { 
+            main { grid-template-columns: 1fr; } 
+            .download-btn, .buy-btn { padding: 12px 20px; font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-crystal"></div>
+    <div class="floating-crystal"></div>
+    <div class="floating-crystal"></div>
+
+    <div class="container">
+        <header>
+            <div class="logo">🌌</div>
+            <h1>Abundance Frequency</h1>
+            <p class="date" id="currentDate"></p>
+        </header>
+
+        <div class="social-proof">
+            <div class="user-count">
+                <i class="fas fa-users"></i>
+                <span id="userCount">1,247</span> people manifesting today
+            </div>
+            <p><em>"This app transformed my money mindset in just 7 days!" - Sarah K.</em></p>
+        </div>
+
+        <main>
+            <!-- FREE FEATURES -->
+            <section class="card affirmation-card">
+                <h2><i class="fas fa-star"></i> Today's Affirmation</h2>
+                <div class="graphic">💎</div>
+                <div class="affirmation" id="dailyAffirmation"></div>
+                <button onclick="newAffirmation()"><i class="fas fa-sync-alt"></i> New Affirmation</button>
+                <button onclick="speakAffirmation()"><i class="fas fa-volume-up"></i> Speak It</button>
+            </section>
+
+            <!-- 432Hz MEDITATION SECTION -->
+            <section class="card meditation-card">
+                <h2><i class="fas fa-spa"></i> 432Hz Healing Frequencies</h2>
+                <div class="graphic">🌀</div>
+                
+                <div class="audio-player">
+                    <div class="timer" id="timer">0:00</div>
+                    
+                    <div class="audio-library">
+                        <div class="audio-track" id="trackMorning" onclick="playAudio('morning')">
+                            <div class="track-icon">🌅</div>
+                            <div class="track-info">
+                                <strong>Morning Abundance Activation</strong>
+                                <span>10 min • Pure 432Hz</span>
+                            </div>
+                            <div class="play-btn" id="playMorning">▶️</div>
+                        </div>
+                        
+                        <div class="audio-track" id="trackWealth" onclick="playAudio('wealth')">
+                            <div class="track-icon">💎</div>
+                            <div class="track-info">
+                                <strong>Wealth Frequency Meditation</strong>
+                                <span>15 min • 432Hz</span>
+                            </div>
+                            <div class="play-btn" id="playWealth">▶️</div>
+                        </div>
+                        
+                        <div class="audio-track" id="trackManifest" onclick="playAudio('manifest')">
+                            <div class="track-icon">✨</div>
+                            <div class="track-info">
+                                <strong>Manifestation Sound Bath</strong>
+                                <span>20 min • 432Hz</span>
+                            </div>
+                            <div class="play-btn" id="playManifest">▶️</div>
+                        </div>
+                    </div>
+
+                    <div class="volume-control">
+                        <i class="fas fa-volume-down"></i>
+                        <input type="range" id="volumeControl" min="0" max="100" value="50" oninput="changeVolume(this.value)">
+                        <i class="fas fa-volume-up"></i>
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <span class="frequency-badge">432Hz</span>
+                        <span style="opacity: 0.8;">Healing Frequency Active</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card journal-card">
+                <h2><i class="fas fa-book"></i> Abundance Journal</h2>
+                <div class="graphic">📖</div>
+                <textarea id="journalEntry" placeholder="What abundance are you grateful for today? What would you like to manifest?"></textarea>
+                <button onclick="saveJournal()"><i class="fas fa-save"></i> Save Entry</button>
+                <button onclick="clearJournal()"><i class="fas fa-trash"></i> Clear</button>
+            </section>
+
+            <!-- UPDATED: 365 AFFIRMATIONS JOURNAL FOR $11 WITH PAYHIP -->
+            <section class="card product-card">
+                <div class="best-seller-badge">BEST SELLER</div>
+                <h2><i class="fas fa-gem"></i> 365 Abundance Affirmations Journal</h2>
+                <div class="graphic">📚</div>
+                
+                <p><strong>Transform Your Mindset in 5 Minutes Daily</strong></p>
+                
+                <ul class="features-list">
+                    <li>365 powerful abundance affirmations</li>
+                    <li>Daily reflection prompts</li>
+                    <li>Manifestation tracking system</li>
+                    <li>Printable PDF + Audio versions</li>
+                    <li>Money mindset exercises</li>
+                    <li>Lifetime access + updates</li>
+                </ul>
+
+                <div class="pricing">
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin: 15px 0;">
+                        <span style="text-decoration: line-through; opacity: 0.7;">$27</span>
+                        <h3 style="color: #4ecdc4; margin: 0; font-size: 1.8em;">$11</h3>
+                    </div>
+                    
+                    <!-- PAYHIP CHECKOUT BUTTON -->
+                    <a href="https://payhip.com/b/81B5E" 
+                       class="buy-btn" 
+                       target="_blank"
+                       onclick="trackPurchase()"
+                       style="text-decoration: none; display: inline-block;">
+                        <i class="fas fa-shopping-cart"></i> Get Instant Access - $11
+                    </a>
+                    
+                    <!-- Alternative button that opens modal -->
+                    <button class="buy-btn" onclick="showCheckoutModal()" style="background: linear-gradient(45deg, #667eea, #764ba2);">
+                        <i class="fas fa-info-circle"></i> Learn More
+                    </button>
+                </div>
+
+                <div class="testimonial">
+                    "This journal completely rewired my brain for abundance. I went from struggling to earning $10k months consistently!" - Maria K.
+                </div>
+                
+                <p style="margin-top: 15px; font-size: 0.9em; opacity: 0.8;">
+                    <i class="fas fa-lock"></i> Secure checkout • Instant delivery • 30-day guarantee
+                </p>
+            </section>
+        </main>
+
+        <!-- UPDATED: CHECKOUT MODAL WITH PAYHIP -->
+        <div id="checkoutModal" class="modal">
+            <div class="modal-content">
+                <h2>🎉 Get Your 365 Affirmations Journal</h2>
+                <p><strong>Instant digital delivery via Payhip</strong></p>
+                
+                <div style="text-align: left; margin: 20px 0;">
+                    <p>✅ Printable PDF Journal</p>
+                    <p>✅ Audio Affirmations</p>
+                    <p>✅ Money Mindset Exercises</p>
+                    <p>✅ Lifetime Access</p>
+                </div>
+
+                <div style="margin: 25px 0;">
+                    <h3 style="color: #4ecdc4;">$11 - One Time Payment</h3>
+                    <a href="https://payhip.com/b/81B5E" 
+                       class="buy-btn" 
+                       target="_blank"
+                       onclick="trackPurchase()"
+                       style="text-decoration: none; display: inline-block; font-size: 1.3em; padding: 20px 40px;">
+                        <i class="fas fa-bolt"></i> Buy Now on Payhip
+                    </a>
+                </div>
+
+                <p style="font-size: 0.9em; opacity: 0.8;">
+                    <i class="fas fa-lock"></i> Secure payment • Instant access • 30-day guarantee
+                </p>
+                <button onclick="closeModal('checkoutModal')" style="margin-top: 15px;">Continue Browsing</button>
+            </div>
+        </div>
+
+        <!-- SUCCESS MODAL -->
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <div class="graphic">🎊</div>
+                <h2>Welcome to Abundance!</h2>
+                <p>Your 365 Affirmations Journal is being prepared...</p>
+                <p><strong>Check your email for download instructions</strong></p>
+                <button onclick="closeModal('successModal')" class="download-btn">Continue to App</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Affirmations database
+        const affirmations = [
+            "I am a magnet for divine abundance and cosmic prosperity.",
+            "The universe flows through me with infinite wealth and blessings.",
+            "I am a conscious creator of my abundant reality.",
+            "My energy vibrates at the frequency of prosperity.",
+            "I am worthy of all the abundance the universe offers.",
+            "Wealth comes to me through divine channels and synchronicity.",
+            "My heart is open to receive limitless blessings.",
+            "I am aligned with the abundant flow of universal energy.",
+            "Prosperity is my divine birthright and natural state.",
+            "I attract wealth effortlessly through my high vibrations."
+        ];
+
+        // REAL 432Hz AUDIO SYSTEM
+        let audioContext;
+        let oscillator;
+        let gainNode;
+        let isPlaying = false;
+        let currentTrack = null;
+        let meditationTimer;
+        let meditationSeconds = 0;
+
+        // Initialize the app
+        function initApp() {
+            updateDate();
+            setDailyAffirmation();
+            initSocialProof();
+            loadJournal();
+            initAudioContext();
+            
+            // Add fade-in animation
+            setTimeout(() => {
+                const cards = document.querySelectorAll('.card');
+                cards.forEach((card, index) => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    
+                    setTimeout(() => {
+                        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, index * 200);
+                });
+            }, 100);
+        }
+
+        // 432Hz AUDIO FUNCTIONS
+        function initAudioContext() {
+            try {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                gainNode = audioContext.createGain();
+                gainNode.connect(audioContext.destination);
+                gainNode.gain.value = 0.3; // Default volume
+                console.log("🎵 432Hz Audio System Ready");
+            } catch (e) {
+                console.log("Web Audio API not supported");
+            }
+        }
+
+        function playAudio(track) {
+            if (!audioContext) {
+                initAudioContext();
+            }
+            
+            // If same track is clicked, stop it
+            if (isPlaying && currentTrack === track) {
+                stop432HzTone();
+                return;
+            }
+            
+            // Stop any currently playing track
+            if (isPlaying) {
+                stop432HzTone();
+            }
+            
+            const durations = {
+                'morning': 600,  // 10 minutes
+                'wealth': 900,   // 15 minutes  
+                'manifest': 1200 // 20 minutes
+            };
+            
+            const trackNames = {
+                'morning': 'Morning Abundance Activation',
+                'wealth': 'Wealth Frequency Meditation', 
+                'manifest': 'Manifestation Sound Bath'
+            };
+            
+            start432HzTone(durations[track], track, trackNames[track]);
+        }
+
+        function start432HzTone(duration, track, trackName) {
+            try {
+                // Create main 432Hz oscillator
+                oscillator = audioContext.createOscillator();
+                oscillator.type = 'sine';
+                oscillator.frequency.setValueAtTime(432, audioContext.currentTime);
+                
+                // Add gentle modulation for natural sound
+                const lfo = audioContext.createOscillator();
+                lfo.type = 'sine';
+                lfo.frequency.setValueAtTime(0.08, audioContext.currentTime); // Very slow modulation
+                
+                const lfoGain = audioContext.createGain();
+                lfoGain.gain.setValueAtTime(0.3, audioContext.currentTime);
+                
+                // Connect modulation
+                lfo.connect(lfoGain);
+                lfoGain.connect(oscillator.frequency);
+                
+                // Connect to output
+                oscillator.connect(gainNode);
+                
+                // Start oscillators
+                oscillator.start();
+                lfo.start();
+                
+                isPlaying = true;
+                currentTrack = track;
+                
+                // Update UI
+                updateTrackUI(track, true);
+                startMeditationTimer(duration, trackName);
+                
+                console.log(`🎵 Playing 432Hz tone for ${duration} seconds`);
+                
+            } catch (error) {
+                console.log("Error playing 432Hz:", error);
+                alert("Please click the play button again to start audio");
+            }
+        }
+
+        function stop432HzTone() {
+            if (oscillator) {
+                oscillator.stop();
+                isPlaying = false;
+                updateTrackUI(currentTrack, false);
+                currentTrack = null;
+                resetMeditationTimer();
+            }
+        }
+
+        function changeVolume(value) {
+            if (gainNode) {
+                // Convert 0-100 range to 0-0.5 range for reasonable volume
+                gainNode.gain.value = (value / 100) * 0.5;
+            }
+        }
+
+        function updateTrackUI(track, playing) {
+            const trackElement = document.getElementById(`track${track.charAt(0).toUpperCase() + track.slice(1)}`);
+            const playButton = document.getElementById(`play${track.charAt(0).toUpperCase() + track.slice(1)}`);
+            
+            // Reset all tracks
+            document.querySelectorAll('.audio-track').forEach(track => {
+                track.classList.remove('playing');
+            });
+            document.querySelectorAll('.play-btn').forEach(btn => {
+                btn.textContent = '▶️';
+            });
+            
+            // Update current track
+            if (playing && trackElement) {
+                trackElement.classList.add('playing');
+                playButton.textContent = '⏸️';
+            }
+        }
+
+        function startMeditationTimer(duration, trackName) {
+            resetMeditationTimer();
+            meditationSeconds = duration;
+            updateTimerDisplay(trackName);
+            
+            meditationTimer = setInterval(() => {
+                meditationSeconds--;
+                updateTimerDisplay(trackName);
+                
+                if (meditationSeconds <= 0) {
+                    clearInterval(meditationTimer);
+                    document.getElementById('timer').innerHTML = "🎉 Complete!";
+                    // Gentle completion
+                    setTimeout(() => {
+                        stop432HzTone();
+                    }, 2000);
+                }
+            }, 1000);
+        }
+
+        function resetMeditationTimer() {
+            clearInterval(meditationTimer);
+            document.getElementById('timer').textContent = "0:00";
+            meditationSeconds = 0;
+        }
+
+        function updateTimerDisplay(trackName) {
+            const minutes = Math.floor(meditationSeconds / 60);
+            const seconds = meditationSeconds % 60;
+            const display = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            document.getElementById('timer').textContent = display;
+        }
+
+        // UPDATED: PAYHIP INTEGRATION FUNCTIONS
+        function showCheckoutModal() {
+            document.getElementById('checkoutModal').style.display = 'block';
+        }
+
+        function trackPurchase() {
+            // You can add Google Analytics or other tracking here
+            console.log('Purchase initiated - 365 Journal');
+            localStorage.setItem('purchaseClicked', 'true');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Existing app functions
+        function updateDate() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        function setDailyAffirmation() {
+            const today = new Date().getDate();
+            const affirmationIndex = today % affirmations.length;
+            document.getElementById('dailyAffirmation').textContent = affirmations[affirmationIndex];
+        }
+
+        function newAffirmation() {
+            const randomIndex = Math.floor(Math.random() * affirmations.length);
+            document.getElementById('dailyAffirmation').textContent = affirmations[randomIndex];
+        }
+
+        function speakAffirmation() {
+            const affirmation = document.getElementById('dailyAffirmation').textContent;
+            if ('speechSynthesis' in window) {
+                const speech = new SpeechSynthesisUtterance(affirmation);
+                speech.rate = 0.8;
+                speech.pitch = 1.1;
+                window.speechSynthesis.speak(speech);
+            }
+        }
+
+        function saveJournal() {
+            const entry = document.getElementById('journalEntry').value;
+            localStorage.setItem('abundanceJournal', entry);
+            alert('Journal saved! 📝');
+        }
+
+        function loadJournal() {
+            const saved = localStorage.getItem('abundanceJournal');
+            if (saved) {
+                document.getElementById('journalEntry').value = saved;
+            }
+        }
+
+        function clearJournal() {
+            if (confirm('Clear your journal entry?')) {
+                document.getElementById('journalEntry').value = '';
+                localStorage.removeItem('abundanceJournal');
+            }
+        }
+
+        function initSocialProof() {
+            const baseUsers = 1247;
+            const randomGrowth = Math.floor(Math.random() * 50);
+            document.getElementById('userCount').textContent = baseUsers + randomGrowth;
+        }
+
+        // Touch-friendly audio context start
+        document.addEventListener('click', function() {
+            if (audioContext && audioContext.state === 'suspended') {
+                audioContext.resume();
+            }
+        }, { once: true });
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
